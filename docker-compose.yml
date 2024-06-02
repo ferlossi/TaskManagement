@@ -1,8 +1,22 @@
-version: '3.4'
-
 services:
-  taskmanagement:
-    image: ${DOCKER_REGISTRY-}taskmanagement
-    build:
-      context: .
-      dockerfile: TaskManagement\Dockerfile
+    sqlserver-db:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        container_name: sqlserver-db
+        environment:
+          SA_PASSWORD: "SaLsita8214"
+          ACCEPT_EULA: "Y"
+        ports:
+            - "1433:1433"
+        volumes:
+        - D:/DockerVolumes/data:/var/opt/mssql/data
+        - D:/DockerVolumes/log:/var/opt/mssql/log
+        - D:/DockerVolumes/secrets:/var/opt/mssql/secrets
+      
+    taskmanager-app:
+        build:
+          context: .
+          dockerfile: TaskManagement/Dockerfile
+        depends_on:
+          - sqlserver-db
+        ports:
+          - "1540:80"
