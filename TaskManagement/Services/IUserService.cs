@@ -9,6 +9,6 @@ namespace TaskManagement.Services
         Task<int> AddUserAsync(User user);
         Task<int> UpdateUserAsync(User user);
         Task<int> DeleteUserAsync(int id);
-        Task<User> AuthenticateUserAsync(string username, string password);
+        Task<User?> AuthenticateUserAsync(string username, string password);
     }
 }

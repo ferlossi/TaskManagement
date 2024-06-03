@@ -43,6 +43,9 @@ namespace TaskManagement.Controllers
         [HttpPut]
         public async Task<IActionResult> Put([FromBody] User user)
         {
+            var currentUser = await _userService.GetUserByIdAsync(1);
+            if (currentUser == null) { return NotFound(); }
+
             await _userService.UpdateUserAsync(user);
             return NoContent();
         }
@@ -50,6 +53,9 @@ namespace TaskManagement.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
+            var currentUser = await _userService.GetUserByIdAsync(1);
+            if (currentUser == null) { return NotFound(); }
+
             await _userService.DeleteUserAsync(id);
             return NoContent();
         }

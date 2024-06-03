@@ -14,3 +14,12 @@ CREATE TABLE [User] (
     Username NVARCHAR(100) NOT NULL,
     Password NVARCHAR(255) NOT NULL
 );
+
+INSERT INTO [dbo].[User]
+           ([Username]
+           ,[Password])
+     VALUES
+           ('InitialUser'
+           ,'InitialUserPassword')
+
+

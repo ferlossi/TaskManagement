@@ -1,4 +1,5 @@
 using TaskManagement.Data;
+using TaskManagement.Middlewares;
 using TaskManagement.Models;
 using TaskManagement.Services;
 
@@ -12,9 +13,9 @@ builder.Services.AddControllers();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 Console.WriteLine(connectionString);
 builder.Services.AddScoped<IRepository<TodoItem>>(provider => new SqlServerRepository<TodoItem>(connectionString));
-builder.Services.AddScoped<IRepository<User>>(provider => new SqlServerRepository<User>(connectionString));
+builder.Services.AddTransient<IRepository<User>>(provider => new SqlServerRepository<User>(connectionString));
 builder.Services.AddScoped<ITodoItemService, TodoItemService>();
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddTransient<IUserService, UserService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -30,7 +31,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthorization();
-
 app.MapControllers();
+app.UseMiddleware<AuthenticationMiddleware>();
 
 app.Run();

@@ -37,7 +37,7 @@ namespace TaskManagement.Services
             return _userRepository.DeleteAsync(id);
         }
 
-        public async Task<User> AuthenticateUserAsync(string username, string password)
+        public async Task<User?> AuthenticateUserAsync(string username, string password)
         {
             var users = await _userRepository.GetAllAsync();
             return users.SingleOrDefault(u => u.Username == username && u.Password == password);

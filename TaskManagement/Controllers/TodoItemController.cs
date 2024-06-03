@@ -43,6 +43,9 @@ namespace TaskManagement.Controllers
         [HttpPut]
         public async Task<IActionResult> Put( [FromBody] TodoItem todoItem)
         {
+            var currentItem = await _todoItemService.GetTodoItemByIdAsync(1);
+            if (currentItem == null) { return NotFound(); }
+
             await _todoItemService.UpdateTodoItemAsync(todoItem);
             return NoContent();
         }
@@ -50,6 +53,9 @@ namespace TaskManagement.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
+            var currentItem = await _todoItemService.GetTodoItemByIdAsync(1);
+            if (currentItem == null) { return NotFound(); }
+
             await _todoItemService.DeleteTodoItemAsync(id);
             return NoContent();
         }
