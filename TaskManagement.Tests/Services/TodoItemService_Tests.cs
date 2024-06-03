@@ -8,37 +8,90 @@ namespace TaskManagement.Tests.Services
 {
     public class TodoItemService_Tests
     {
-        [Fact]
-        public async Task GetTodoItemByIdAsync_ExistingId_ReturnsTodoItem()
+        private readonly Mock<IRepository<TodoItem>> _mockTodoItemRepository;
+        private readonly TodoItemService _todoItemService;
+
+        public TodoItemService_Tests()
         {
-            // Arrange
-            var mockRepository = new Mock<IRepository<TodoItem>>();
-            mockRepository.Setup(repo => repo.GetByIdAsync(It.IsAny<int>()))
-                .ReturnsAsync(new TodoItem { Id = 1, Title = "Test Todo", IsCompleted = false });
-            var todoItemService = new TodoItemService(mockRepository.Object);
-
-            // Act
-            var todoItem = await todoItemService.GetTodoItemByIdAsync(1);
-
-            // Assert
-            todoItem.Should().NotBeNull();
-            todoItem?.Title.Should().Be("Test Todo");
+            _mockTodoItemRepository = new Mock<IRepository<TodoItem>>();
+            _todoItemService = new TodoItemService(_mockTodoItemRepository.Object);
         }
 
         [Fact]
-        public async Task GetTodoItemByIdAsync_NonExistingId_ReturnsNull()
+        public async Task GetAllTodoItemsAsync_ShouldReturnAllTasks()
         {
             // Arrange
-            var mockRepository = new Mock<IRepository<TodoItem>>();
-            mockRepository.Setup(repo => repo.GetByIdAsync(It.IsAny<int>()))
-                .ReturnsAsync((TodoItem)null);
-            var todoItemService = new TodoItemService(mockRepository.Object);
+            var todoItems = new List<TodoItem>
+            {
+                new TodoItem { Id = 1, Description = "Task 1", IsCompleted = false },
+                new TodoItem { Id = 2, Description = "Task 2", IsCompleted = true }
+            };
+            _mockTodoItemRepository.Setup(repo => repo.GetAllAsync()).ReturnsAsync(todoItems);
 
             // Act
-            var todoItem = await todoItemService.GetTodoItemByIdAsync(999);
+            var result = await _todoItemService.GetAllTodoItemsAsync();
 
             // Assert
-            todoItem.Should().BeNull();
+            result.Should().BeEquivalentTo(todoItems);
+        }
+
+        [Fact]
+        public async Task GetTodoItemByIdAsync_ShouldReturnTodoItem()
+        {
+            // Arrange
+            var todoItem = new TodoItem { Id = 1, Description = "Task 1", IsCompleted = false };
+            _mockTodoItemRepository.Setup(repo => repo.GetByIdAsync(todoItem.Id)).ReturnsAsync(todoItem);
+
+            // Act
+            var result = await _todoItemService.GetTodoItemByIdAsync(todoItem.Id);
+
+            // Assert
+            result.Should().BeEquivalentTo(todoItem);
+        }
+
+        [Fact]
+        public async Task AddTodoItemAsync_ShouldAddTask()
+        {
+            // Arrange
+            var todoItem = new TodoItem { Id = 1, Description = "Task 1", IsCompleted = false };
+            _mockTodoItemRepository.Setup(repo => repo.AddAsync(todoItem)).ReturnsAsync(1);
+
+            // Act
+            var result = await _todoItemService.AddTodoItemAsync(todoItem);
+
+            // Assert
+            result.Should().Be(1);
+            _mockTodoItemRepository.Verify(repo => repo.AddAsync(todoItem), Times.Once);
+        }
+
+        [Fact]
+        public async Task UpdateTodoItemAsync_ShouldUpdateTask()
+        {
+            // Arrange
+            var todoItem = new TodoItem { Id = 1, Description = "Task 1", IsCompleted = false };
+            _mockTodoItemRepository.Setup(repo => repo.UpdateAsync(todoItem)).ReturnsAsync(1);
+
+            // Act
+            var result = await _todoItemService.UpdateTodoItemAsync(todoItem);
+
+            // Assert
+            result.Should().Be(1);
+            _mockTodoItemRepository.Verify(repo => repo.UpdateAsync(todoItem), Times.Once);
+        }
+
+        [Fact]
+        public async Task DeleteTodoItemAsync_ShouldDeleteTask()
+        {
+            // Arrange
+            var todoItem = new TodoItem { Id = 1, Description = "Task 1", IsCompleted = false };
+            _mockTodoItemRepository.Setup(repo => repo.DeleteAsync(todoItem.Id)).ReturnsAsync(1);
+
+            // Act
+            var result = await _todoItemService.DeleteTodoItemAsync(todoItem.Id);
+
+            // Assert
+            result.Should().Be(1);
+            _mockTodoItemRepository.Verify(repo => repo.DeleteAsync(todoItem.Id), Times.Once);
         }
     }
 

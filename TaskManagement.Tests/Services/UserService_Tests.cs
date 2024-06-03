@@ -22,7 +22,7 @@ namespace TaskManagement.Tests.Services
 
             // Assert
             user.Should().NotBeNull();
-            user.Username.Should().Be("testuser");
+            user?.Username.Should().Be("testuser");
         }
 
         [Fact]
