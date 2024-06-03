@@ -16,6 +16,8 @@ services:
         build:
           context: .
           dockerfile: TaskManagement/Dockerfile
+        environment:
+          - ASPNETCORE_ENVIRONMENT=Development
         depends_on:
           - sqlserver-db
         ports:
