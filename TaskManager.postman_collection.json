@@ -1,0 +1,356 @@
+{
+	"info": {
+		"_postman_id": "4079d6e5-9591-4ee5-aba6-2fc25b430094",
+		"name": "TaskManager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23941743"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Username",
+								"value": "InitialUser",
+								"type": "text"
+							},
+							{
+								"key": "Password",
+								"value": "InitialUserPassword",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{ApiURL}}/api/User",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"api",
+								"User"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Username",
+								"value": "InitialUser"
+							},
+							{
+								"key": "Password",
+								"value": "InitialUserPassword"
+							}
+						],
+						"url": {
+							"raw": "{{ApiURL}}/api/User/:id",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"api",
+								"User",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Username",
+								"value": "InitialUser"
+							},
+							{
+								"key": "Password",
+								"value": "InitialUserPassword"
+							}
+						],
+						"url": {
+							"raw": "{{ApiURL}}/api/User/:id",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"api",
+								"User",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Username",
+								"value": "InitialUser"
+							},
+							{
+								"key": "Password",
+								"value": "InitialUserPassword"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"username\": \"User2\",\r\n  \"password\": \"Password2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ApiURL}}/api/User",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"api",
+								"User"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Username",
+								"value": "InitialUser"
+							},
+							{
+								"key": "Password",
+								"value": "InitialUserPassword"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 2,\r\n  \"username\": \"User2\",\r\n  \"password\": \"Password2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ApiURL}}/api/User",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"api",
+								"User"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Todo Items",
+			"item": [
+				{
+					"name": "Todo Item",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Username",
+								"value": "InitialUser"
+							},
+							{
+								"key": "Password",
+								"value": "InitialUserPassword"
+							}
+						],
+						"url": {
+							"raw": "{{ApiURL}}/api/TodoItem",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"api",
+								"TodoItem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Todo Item By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Username",
+								"value": "InitialUser"
+							},
+							{
+								"key": "Password",
+								"value": "InitialUserPassword"
+							}
+						],
+						"url": {
+							"raw": "{{ApiURL}}/api/TodoItem/:id",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"api",
+								"TodoItem",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Todo Item",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Username",
+								"value": "InitialUser"
+							},
+							{
+								"key": "Password",
+								"value": "InitialUserPassword"
+							}
+						],
+						"url": {
+							"raw": "{{ApiURL}}/api/TodoItem/:id",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"api",
+								"TodoItem",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Todo Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Username",
+								"value": "InitialUser"
+							},
+							{
+								"key": "Password",
+								"value": "InitialUserPassword"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 0,\r\n    \"title\": \"Test Item 2\",\r\n    \"description\": \"Testing todo item 2\",\r\n    \"dueDate\": \"2024-06-20\",\r\n    \"isCompleted\": false,\r\n    \"userId\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ApiURL}}/api/TodoItem",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"api",
+								"TodoItem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Todo Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Username",
+								"value": "InitialUser"
+							},
+							{
+								"key": "Password",
+								"value": "InitialUserPassword"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"title\": \"Test Item 2\",\r\n    \"description\": \"Testing todo item 2\",\r\n    \"dueDate\": \"2024-06-20T00:00:00\",\r\n    \"isCompleted\": true,\r\n    \"userId\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ApiURL}}/api/TodoItem",
+							"host": [
+								"{{ApiURL}}"
+							],
+							"path": [
+								"api",
+								"TodoItem"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
