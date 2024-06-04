@@ -61,7 +61,9 @@ So that I can manage my tasks effectively.
     - Open a Powershell on project root and run the following commands
       - `docker-compose build `
       - `docker-compose up `
-5. **You are ready!**
+5. **Run initial db script**
+    - Login to TaskManagerDb DB and run init db script available [here](https://github.com/ferlossi/TaskManagement/blob/main/init-database.sql)
+6. **You are ready!**
     - You can start playing around with the available postman collection. You can locate it [here](https://github.com/ferlossi/TaskManagement/blob/main/TaskManager.postman_collection.json)
     - There are a couple of postman environment availables as well [Docker](https://github.com/ferlossi/TaskManagement/blob/main/Docker.postman_environment.json) [Local](https://github.com/ferlossi/TaskManagement/blob/main/Local.postman_environment.json)
 
