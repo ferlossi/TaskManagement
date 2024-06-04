@@ -62,7 +62,8 @@ So that I can manage my tasks effectively.
       - `docker-compose build `
       - `docker-compose up `
 5. **You are ready!**
-    - You can start playing around with the available postman collection. You can locate it here
+    - You can start playing around with the available postman collection. You can locate it [here](https://github.com/ferlossi/TaskManagement/blob/main/TaskManager.postman_collection.json)
+    - There are a couple of postman environment availables as well [Docker](https://github.com/ferlossi/TaskManagement/blob/main/Docker.postman_environment.json) [Local](https://github.com/ferlossi/TaskManagement/blob/main/Local.postman_environment.json)
 
 ## Additional info ##
 1. Database is originally configured to be available on:
