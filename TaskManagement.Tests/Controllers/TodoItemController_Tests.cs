@@ -10,7 +10,7 @@ namespace TaskManagement.Tests.Controllers
     public class TodoItemController_Tests
     {
         [Fact]
-        public async Task GetAllTodoItems_ReturnsOkWithTodoItems()
+        public async Task Get_ReturnsOkWithTodoItems()
         {
             // Arrange
             var mockTodoItemService = new Mock<ITodoItemService>();
@@ -33,7 +33,7 @@ namespace TaskManagement.Tests.Controllers
         }
 
         [Fact]
-        public async Task GetTodoItemById_ExistingId_ReturnsOkWithTodoItem()
+        public async Task Get_ExistingId_ReturnsOkWithTodoItem()
         {
             // Arrange
             var mockTodoItemService = new Mock<ITodoItemService>();
@@ -53,7 +53,7 @@ namespace TaskManagement.Tests.Controllers
         }
 
         [Fact]
-        public async Task GetTodoItemById_NonExistingId_ReturnsNotFound()
+        public async Task Get_NonExistingId_ReturnsNotFound()
         {
             // Arrange
             var mockTodoItemService = new Mock<ITodoItemService>();
@@ -70,7 +70,7 @@ namespace TaskManagement.Tests.Controllers
         }
 
         [Fact]
-        public async Task CreateTodoItem_ValidTodoItem_ReturnsCreatedAtAction()
+        public async Task Post_ValidTodoItem_ReturnsCreatedAtAction()
         {
             // Arrange
             var todoItem = new TodoItem { Id = 1, Title = "Task 1", IsCompleted = false };
@@ -91,7 +91,7 @@ namespace TaskManagement.Tests.Controllers
         }
 
         [Fact]
-        public async Task UpdateTodoItem_ExistingId_ReturnsNoContent()
+        public async Task Put_ExistingId_ReturnsNoContent()
         {
             // Arrange
             var todoItem = new TodoItem { Id = 1, Title = "Task 1", IsCompleted = false };
@@ -111,7 +111,7 @@ namespace TaskManagement.Tests.Controllers
         }
 
         [Fact]
-        public async Task UpdateTodoItem_NonExistingId_ReturnsNotFound()
+        public async Task Put_NonExistingId_ReturnsNotFound()
         {
             // Arrange
             var todoItem = new TodoItem { Id = 1, Title = "Task 1", IsCompleted = false };
@@ -129,7 +129,7 @@ namespace TaskManagement.Tests.Controllers
         }
 
         [Fact]
-        public async Task DeleteTodoItem_ExistingId_ReturnsNoContent()
+        public async Task Delete_ExistingId_ReturnsNoContent()
         {
             // Arrange
             var mockTodoItemService = new Mock<ITodoItemService>();
@@ -148,7 +148,7 @@ namespace TaskManagement.Tests.Controllers
         }
 
         [Fact]
-        public async Task DeleteTodoItem_NonExistingId_ReturnsNotFound()
+        public async Task Delete_NonExistingId_ReturnsNotFound()
         {
             // Arrange
             var mockTodoItemService = new Mock<ITodoItemService>();
