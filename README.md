@@ -69,4 +69,8 @@ So that I can manage my tasks effectively.
 1. Database is originally configured to be available on:
     - Port: 1450
     - URL: 127.0.0.1 (localhost)
+2. Database details:
+    - Name: TaskManagerDb
+    - User: sa
+    - Password: Testing123
 2. Service is running on DEVELOPMENT mode, so swagger is available [here](http://localhost:1540/swagger/index.html)
