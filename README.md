@@ -1,5 +1,18 @@
 # TaskManagement
 
+## Context and thinking process
+This project is the result of a proposed development exercise, where the goal was to develop a simple web application with an API and data layer using .NET C#,
+ASP.NET MVC, Web API, and a database or data store, while adhering to Clean Architecture
+principles and using Test-Driven Development (TDD) methodologies.
+
+Based on my experience, I made some decisions:
+- Dockerize the web application and database to keep it portable and flexible.
+- Using Clean Architecture to define my project structure, making references from outer layers to inner layers instead of the opposite.
+- An abstraction over data layer will help us on changing data sources in the future without problems.
+- Also create a complete set of unit tests that provide coverage to my code and help me to guarantee the code quality.
+- Created a middleware as well to authenticate the requests and add another security layer to the proposed architecture. 
+- The main idea of my solution was to create an application with low coupling and high cohesion, following coding standards.
+
 ## User Story
 
 **As a user**,  
@@ -75,4 +88,4 @@ So that I can manage my tasks effectively.
     - Name: TaskManagerDb
     - User: sa
     - Password: Testing123
-2. Service is running on DEVELOPMENT mode, so swagger is available [here](http://localhost:1540/swagger/index.html)
+2. Service is running on DEVELOPMENT mode, so swagger is available [here](http://localhost:1540/swagger/index.html) once you run the project using docker-compose.

@@ -8,9 +8,9 @@ services:
         ports:
             - "1450:1433"
         volumes:
-        - D:/DockerVolumes/data:/var/opt/mssql/data
-        - D:/DockerVolumes/log:/var/opt/mssql/log
-        - D:/DockerVolumes/secrets:/var/opt/mssql/secrets
+        - C:/DockerVolumes/data:/var/opt/mssql/data
+        - C:/DockerVolumes/log:/var/opt/mssql/log
+        - C:/DockerVolumes/secrets:/var/opt/mssql/secrets
       
     taskmanager-app:
         build:

@@ -37,6 +37,12 @@ namespace TaskManagement.Controllers
         public async Task<IActionResult> Post([FromBody] TodoItem todoItem)
         {
             var result = await _todoItemService.AddTodoItemAsync(todoItem);
+
+            if (HttpContext?.Items["User"] is User user)
+            {
+                todoItem.UserId = user.Id;
+            }
+
             return CreatedAtAction(nameof(Get), new { id = result }, todoItem);
         }
 
@@ -45,6 +51,11 @@ namespace TaskManagement.Controllers
         {
             var currentItem = await _todoItemService.GetTodoItemByIdAsync(1);
             if (currentItem == null) { return NotFound(); }
+
+            if (HttpContext?.Items["User"] is User user)
+            {
+                todoItem.UserId = user.Id;
+            }
 
             await _todoItemService.UpdateTodoItemAsync(todoItem);
             return NoContent();
